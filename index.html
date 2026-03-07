@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secret Image Unlock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+        #secretImage {
+            display: none;
+            margin-top: 20px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter the secret code</h2>
+
+    <input type="text" id="codeInput" placeholder="Enter code">
+    <button onclick="checkCode()">Submit</button>
+
+    <p id="message"></p>
+
+    <!-- Replace this with your own image -->
+    <img id="secretImage" src="image.jpg" alt="Secret">
+
+    <script>
+        function checkCode() {
+            const correctCode = "1234";  // change this to whatever you want
+            const userCode = document.getElementById("codeInput").value;
+            const message = document.getElementById("message");
+            const image = document.getElementById("secretImage");
+
+            if (userCode === correctCode) {
+                message.textContent = "Correct!";
+                image.style.display = "block";
+            } else {
+                message.textContent = "Incorrect code.";
+                image.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

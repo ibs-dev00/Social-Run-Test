@@ -9,15 +9,14 @@
             text-align: center;
             margin-top: 80px;
         }
-    
+
         .secretImage {
             display: none;
             max-width: 300px;
-            margin: 20px auto;   
-            display: block;      
+            margin: 20px auto;   /* centers the image */
+            display: block;      /* required for auto-centering */
         }
     </style>
-
 </head>
 <body>
 
@@ -38,9 +37,9 @@
     <img id="q7" class="secretImage" src="Q7.png" alt="Q7 Image">
 
     <script>
-        // Map all accepted answers to their corresponding image
+        // All accepted answers mapped to their images
         const answerMap = {
-            "west", "West": "q1",
+            "west": "q1",
             "7": "q2",
             "seven": "q2",
             "18": "q3",

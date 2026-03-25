@@ -35,7 +35,7 @@
     <img id="q7" class="secretImage" src="Q7.png" alt="Q7 Image">
 
     <script>
-        // Accepted answers for each image
+        // Map all accepted answers to their corresponding image
         const answerMap = {
             "west": "q1",
             "7": "q2",
@@ -52,10 +52,10 @@
             const userCode = document.getElementById("codeInput").value.trim().toLowerCase();
             const message = document.getElementById("message");
 
-            // Hide all images first
+            // Hide all images
             document.querySelectorAll(".secretImage").forEach(img => img.style.display = "none");
 
-            // Check if answer exists
+            // Check if answer matches
             if (answerMap[userCode]) {
                 const imageId = answerMap[userCode];
                 document.getElementById(imageId).style.display = "block";

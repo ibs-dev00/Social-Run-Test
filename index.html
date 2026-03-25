@@ -3,47 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>Secret Image Unlock</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 50px;
         }
-        #secretImage {
+
+        .secret {
             display: none;
-            margin-top: 20px;
             max-width: 300px;
+            margin-top: 20px;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: auto;
         }
     </style>
 </head>
 <body>
 
-    <h2>Enter the secret code</h2>
+<div id="container">
 
-    <input type="text" id="codeInput" placeholder="Enter code">
-    <button onclick="checkCode()">Submit</button>
+    <h2>Unlock the Secret Images</h2>
+
+    <p>Select a question, enter the correct answer, and reveal the hidden image.</p>
+
+    <!-- Question selector -->
+    <select id="questionSelect">
+        <option value="q1">Question 1</option>
+        <option value="q2">Question 2</option>
+        <option value="q3">Question 3</option>
+        <option value="q4">Question 4</option>
+        <option value="q5">Question 5</option>
+        <option value="q6">Question 6</option>
+        <option value="q7">Question 7</option>
+    </select>
+
+    <br><br>
+
+    <!-- Answer input -->
+    <input type="text" id="codeInput" placeholder="Enter answer">
+    <button onclick="checkCode()">Unlock</button>
 
     <p id="message"></p>
 
-    <!-- Replace this with your own image -->
-    <img id="secretImage" src="image1.png" alt="Secret">
+    <!-- Images for Q1–Q7 -->
+    <img id="q1" class="secret" src="Q1.png" alt="Q1 Image">
+    <img id="q2" class="secret" src="Q2.png" alt="Q2 Image">
+    <img id="q3" class="secret" src="Q3.png" alt="Q3 Image">
+    <img id="q4" class="secret" src="Q4.png" alt="Q4 Image">
+    <img id="q5" class="secret" src="Q5.png" alt="Q5 Image">
+    <img id="q6" class="secret" src="Q6.png" alt="Q6 Image">
+    <img id="q7" class="secret" src="Q7.png" alt="Q7 Image">
 
-    <script>
-        function checkCode() {
-            const correctCode = "1234";  // change this to whatever you want
-            const userCode = document.getElementById("codeInput").value;
-            const message = document.getElementById("message");
-            const image = document.getElementById("secretImage");
+</div>
 
-            if (userCode === correctCode) {
-                message.textContent = "Correct!";
-                image.style.display = "block";
-            } else {
-                message.textContent = "Incorrect code.";
-                image.style.display = "none";
-            }
+<script>
+    // All accepted answers for each question
+    const answers = {
+        q1: ["West","west","WEST"],
+        q2: ["7", "seven","Seven"],
+        q3: ["18"],
+        q4: ["92"],
+        q5: ["32"],
+        q6: ["1960"],
+        q7: ["ireland","Ireland","Irish", "irish"]
+    };
+
+    function checkCode() {
+        const selected = document.getElementById("questionSelect").value;
+        const userInput = document.getElementById("codeInput").value.trim().toLowerCase();
+        const message = document.getElementById("message");
+
+        // Hide all images first
+        document.querySelectorAll(".secret").forEach(img => img.style.display = "none");
+
+        // Check if answer is correct
+        if (answers[selected].includes(userInput)) {
+            message.textContent = "Correct!";
+            document.getElementById(selected).style.display = "block";
+        } else {
+            message.textContent = "Incorrect answer.";
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
